@@ -12,6 +12,15 @@ const User = () => {
         .catch(error => console.log(error))
     },[])
 
+    const handleClick = (id) => {
+        axios.delete('http://localhost:4000/api/users/'+id)
+        .then(res=> {
+            console.log(res);
+            window.location.reload();
+        })
+        .catch(err => console.log(err))
+    }
+
     return (
         <div>
             <Link to="/createUser"><button>Add User</button></Link>
@@ -31,7 +40,7 @@ const User = () => {
                             <td>{user.email}</td>
                             <td>
                                 <Link to={`/updateUser/${user._id}`}><button>Edit</button></Link>
-                                <button>Delete</button>
+                                <button onClick={()=> handleClick(user._id)}>Delete</button>
                             </td>
                         </tr>
                         })
