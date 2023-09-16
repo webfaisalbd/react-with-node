@@ -6,12 +6,17 @@ export const CreateUser = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
 
+    const navigate = useNavigate();
+
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        axios.post('http://localhost:4000/api/users', {name, email})
-        .then(res => console.log(res))
-        .then(err => console.log(err))
+        axios.post('http://localhost:4000/api/users', { name, email })
+            .then(res => {
+                console.log(res);
+                navigate('/');
+            })
+            .then(err => console.log(err))
     }
 
     return (

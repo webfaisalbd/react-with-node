@@ -30,7 +30,7 @@ const User = () => {
                             <td>{user.name}</td>
                             <td>{user.email}</td>
                             <td>
-                                <button>Edit</button>
+                                <Link to={`/updateUser/${user._id}`}><button>Edit</button></Link>
                                 <button>Delete</button>
                             </td>
                         </tr>
